@@ -7,7 +7,10 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import com.formationkilo.model.AccountStatus;
+import com.formationkilo.model.AccountType;
 import com.formationkilo.model.BankAccount;
+import com.formationkilo.model.BankDirector;
 
 public class AccountRepositoryImpl implements IAccountRepository{
 
@@ -52,7 +55,13 @@ public class AccountRepositoryImpl implements IAccountRepository{
 	}
 	public void populateData() {
 		for(int i=0;i<10;i++) {
-			
+		BankAccount	account =BankDirector.accountBuilder()
+				.balance(10000+Math.random()*90000)
+				.type(Math.random()>0.5?AccountType.SAVING_ACCOUNT:AccountType.CURRENT_ACCOUNT)
+				.status(Math.random()>0.5? AccountStatus.CREATED:AccountStatus.ACTIVATED)
+				.currency(Math.random()>0.5?"EUR":"USD")
+				.build();
+		  save(account);
 		}
 	}
 
