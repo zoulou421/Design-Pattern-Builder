@@ -61,9 +61,8 @@ public String toString() {
 			+ currency + ", type=" + type + ", status=" + status + "]";
 }
 
-public static AccountBuilder builder() {
-	return new AccountBuilder();
-}
+//Remove and relocate builder method into Director class/
+//and renamed it accountBuilder
  public static class AccountBuilder{
 	private BankAccount bankAccount=new BankAccount();
 	
